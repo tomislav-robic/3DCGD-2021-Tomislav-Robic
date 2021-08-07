@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
+    public float speed = 40f;
+    public float maxRotation = 30f;
+    public float shootDelay = 3f;
+    bool canShoot = true;
     public GameObject bullet;
     Transform bulletOrigin;
 
@@ -14,14 +18,18 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos += Camera.main.transform.forward * 30f;
-        Vector3 aim = Camera.main.ScreenToWorldPoint(mousePos);
-        transform.LookAt(aim);
-        if (Input.GetMouseButtonDown(0))
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && canShoot)
         {
             GameObject _bullet = Instantiate(bullet, bulletOrigin.position, bulletOrigin.rotation);
-            _bullet.transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y), Mathf.Abs(transform.localScale.z)); 
+            _bullet.transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y), Mathf.Abs(transform.localScale.z));
+            canShoot = false;
+            StartCoroutine(Delay(shootDelay));
         }
+    }
+
+    IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canShoot = true;
     }
 }
