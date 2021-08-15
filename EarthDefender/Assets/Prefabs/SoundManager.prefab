@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7210943981851495626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7210943981851495627}
+  - component: {fileID: 7210943981851495628}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7210943981851495627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210943981851495626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -99.10982, y: -11.88638, z: -33.058628}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7210943981851495628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210943981851495626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361d278bc89a295469efb7f5702715fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 0266873071217b641b430b3bfe29a766, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    mixer: {fileID: -4735085502634277684, guid: 315b7084aa0594a4eb3ef2f4a2633919,
+      type: 2}
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 1552c2d222d09cd47aaefaed8940e725, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    mixer: {fileID: -4735085502634277684, guid: 315b7084aa0594a4eb3ef2f4a2633919,
+      type: 2}
+    source: {fileID: 0}
+  - name: Level1Theme
+    clip: {fileID: 8300000, guid: 2b57b7d8d4b488f48a80d8822b902006, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    mixer: {fileID: 7071739913572058086, guid: 315b7084aa0594a4eb3ef2f4a2633919, type: 2}
+    source: {fileID: 0}
+  - name: Level2Theme
+    clip: {fileID: 8300000, guid: 5344c49dc97d3dd4688b892e419c5d56, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    mixer: {fileID: 7071739913572058086, guid: 315b7084aa0594a4eb3ef2f4a2633919, type: 2}
+    source: {fileID: 0}
+  - name: Level3Theme
+    clip: {fileID: 8300000, guid: dcb7a188f323dcb408f5c8bb4bd77772, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    mixer: {fileID: 7071739913572058086, guid: 315b7084aa0594a4eb3ef2f4a2633919, type: 2}
+    source: {fileID: 0}

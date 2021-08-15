@@ -1,11 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     private bool timelinePlaying = false;
+
+    private void Start()
+    {
+        SoundManager.i.Play(Sounds.MenuTheme);
+    }
 
     public void Exit()
     {
@@ -17,6 +20,7 @@ public class UIManager : MonoBehaviour
     }
     public void TimelineStarted()
     {
+        SoundManager.i.Stop(Sounds.MenuTheme);
         timelinePlaying = true;
     }
     private void Update()

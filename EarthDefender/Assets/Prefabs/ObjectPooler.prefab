@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7519698499418447283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7519698499418447282}
+  - component: {fileID: 7519698499418447293}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7519698499418447282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7519698499418447283}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 907.7817, y: 454.01587, z: -1182.5571}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7519698499418447293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7519698499418447283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d332b159c6ddc4da0bf5048d41a08b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Bullet
+    prefab: {fileID: 1687412288418239205, guid: 91e5b9bf6e92985439050db9121b94fe,
+      type: 3}
+    size: 32
+  - tag: BigAsteroid
+    prefab: {fileID: 4623871736156101768, guid: 213c3ac7573e63b458fdb5fb8150dd60,
+      type: 3}
+    size: 10
+  - tag: SmallAsteroid
+    prefab: {fileID: 5390204248674067870, guid: 04a38725896b38b41a00ec1e062d63d2,
+      type: 3}
+    size: 20
+  - tag: EnemyBullet
+    prefab: {fileID: 1687412288418239205, guid: 64c6f3351a7542141ae4d66ed74ea91a,
+      type: 3}
+    size: 32
+  - tag: BigExplosion
+    prefab: {fileID: 3975715151466031565, guid: c176c826a5e0fd346bfd923cec631e1b,
+      type: 3}
+    size: 10
+  - tag: SmallExplosion
+    prefab: {fileID: 8357650807989959661, guid: 1970d8a5f76220a47accc66d1bd8ba9a,
+      type: 3}
+    size: 20

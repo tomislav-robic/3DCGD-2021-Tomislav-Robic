@@ -1,17 +1,27 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletTravel : MonoBehaviour
+public class BulletTravel : MonoBehaviour, IPooledObject
 {
     public float speed = 20f;
-    public float destroyAfter = 10f;
-    private void Start()
+    public float destroyAfter = 5f;
+
+    public void OnObjectSpawn()
     {
-        Destroy(gameObject, destroyAfter);
+        StopAllCoroutines();
+        StartCoroutine(PoolAfter(destroyAfter));
+        GetComponent<Rigidbody>().velocity = transform.forward * speed;
     }
-    private void Update()
+
+    /*private void FixedUpdate()
     {
-        transform.position += transform.forward * Time.deltaTime * speed;
+        transform.position += transform.forward * Time.fixedDeltaTime * speed;
+    }*/
+
+    IEnumerator PoolAfter(float _poolAfter)
+    {
+        yield return new WaitForSeconds(_poolAfter);
+        gameObject.SetActive(false);
+        yield return null;
     }
 }

@@ -1,19 +1,25 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallAsteroid : MonoBehaviour
+public class SmallAsteroid : MonoBehaviour, IPooledObject
 {
     public GameObject explosionParticle;
     public float damage = 20f;
-    EarthHealth earth;
-    SpaceshipHealth spaceship;
+    public float pointsBonus = 100f;
     bool exploded = false;
-    private void Awake()
+    DifficultyHandler difficulty;
+    ObjectPooler objectPooler;
+    public void OnObjectSpawn()
     {
-        earth = FindObjectOfType<EarthHealth>();
-        spaceship = FindObjectOfType<SpaceshipHealth>();
         Spawner.spawnedAsteroids++;
+        exploded = false;
+    }
+    private void Start()
+    {
+        objectPooler = ObjectPooler.i;
+        difficulty = FindObjectOfType<DifficultyHandler>();
+        damage *= difficulty.diffFloat;
+        pointsBonus *= difficulty.diffFloat;
     }
     private void OnDestroy()
     {
@@ -25,24 +31,35 @@ public class SmallAsteroid : MonoBehaviour
         if (other.transform.CompareTag("Bullet") && !exploded)
         {
             exploded = true;
-            GameObject particle = Instantiate(explosionParticle, transform.position, Quaternion.identity);
-            Destroy(particle, 5.5f);
-            Destroy(other.gameObject); // Convert to pooling later
-            Destroy(gameObject);
+            SoundManager.i.Play(Sounds.Explosion);
+            FindObjectOfType<PointsSystem>().AddPoints(pointsBonus);
+            GameObject particle = objectPooler.SpawnFromPool(PooledObjects.SmallExplosion, transform.position, Quaternion.identity);
+            particle.GetComponent<ParticleSystem>().Play();
+            other.transform.parent.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            OnDestroy();
         }
         if (other.CompareTag("Earth") && !exploded)
         {
             exploded = true;
-            earth.TakeDamage(damage);
-            Destroy(gameObject);
+            SoundManager.i.Play(Sounds.Explosion);
+            other.GetComponentInParent<EarthHealth>().TakeDamage(damage);
+            gameObject.SetActive(false);
+            OnDestroy();
         }
         if (other.CompareTag("Spaceship") && !exploded)
         {
             exploded = true;
-            spaceship.TakeDamage(damage);
-            GameObject particle = Instantiate(explosionParticle, transform.position, Quaternion.identity);
-            Destroy(particle, 5.5f);
-            Destroy(gameObject);
+            SoundManager.i.Play(Sounds.Explosion);
+            other.GetComponentInParent<SpaceshipHealth>().TakeDamage(damage);
+            GameObject particle = objectPooler.SpawnFromPool(PooledObjects.SmallExplosion, transform.position, Quaternion.identity);
+            particle.GetComponent<ParticleSystem>().Play();
+            gameObject.SetActive(false);
+            OnDestroy();
+        }
+        if (other.CompareTag("Enemy") && !exploded)
+        {
+            Explode();
         }
     }
 
@@ -56,5 +73,16 @@ public class SmallAsteroid : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(time);
         GetComponent<Collider>().enabled = true;
+    }
+
+    public void Explode()
+    {
+        exploded = true;
+        SoundManager.i.Play(Sounds.Explosion);
+        FindObjectOfType<PointsSystem>().AddPoints(pointsBonus);
+        GameObject particle = objectPooler.SpawnFromPool(PooledObjects.SmallExplosion, transform.position, Quaternion.identity);
+        particle.GetComponent<ParticleSystem>().Play();
+        gameObject.SetActive(false);
+        OnDestroy();
     }
 }
