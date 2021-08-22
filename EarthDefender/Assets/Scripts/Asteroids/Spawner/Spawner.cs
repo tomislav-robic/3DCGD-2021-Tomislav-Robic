@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Spawner : MonoBehaviour
 {
     public static int spawnedAsteroids;
+    public static bool levelFailed = false;
 
     public GameObject bigAsteroid;
     public GameObject coin;
@@ -63,11 +64,15 @@ public class Spawner : MonoBehaviour
                 CancelInvoke();
                 levelComplete = true;
             }
-            if (spawnedAsteroids == 0 && levelComplete && !executed)
+            //Debug.Log($"Time: {time}, Spawned Asteroids: {spawnedAsteroids}, Level Complete: {levelComplete}, Executed: {executed}, Level Failed: {levelFailed}");
+            if (spawnedAsteroids == 0 && levelComplete && !executed && !levelFailed)
             {
+                //Debug.Log($"Level Complete");
                 FindObjectOfType<PlayableDirector>().Play();
                 foreach (WeaponController weapon in FindObjectsOfType<WeaponController>()) weapon.enabled = false;
+                SpaceshipController.canPause = false;
                 executed = true;
+                //Debug.Log($"Script executed");
             }
         } 
         else if (useEnemies)
@@ -90,10 +95,11 @@ public class Spawner : MonoBehaviour
                     CancelInvoke();
                     levelComplete = true;
                 }
-                if (spawnedAsteroids == 0 && levelComplete && !executed)
+                if (spawnedAsteroids == 0 && levelComplete && !executed && !levelFailed)
                 {
                     FindObjectOfType<PlayableDirector>().Play();
                     foreach (WeaponController weapon in FindObjectsOfType<WeaponController>()) weapon.enabled = false;
+                    SpaceshipController.canPause = false;
                     executed = true;
                 }
             }
@@ -107,23 +113,27 @@ public class Spawner : MonoBehaviour
 
     public void SpawnBigAsteroid()
     {
+        spawnEarth = false;
+        spawnHealth = false;
+        spawnShield = false;
         GetConditions();
-        float rng = Random.Range(0f, 100f);
-        if(spawnEarth && rng>=100f-powerUpChance)
+        float rng = Random.value;
+        if(spawnEarth && rng >= 1f-(powerUpChance/100f))
         {
             GameObject _earthPowerUp = Instantiate(powerUps.earthPowerUp, new Vector3(transform.position.x + Random.Range(-XOffset, XOffset), transform.position.y + Random.Range(-YOffset, YOffset), transform.position.z), Quaternion.identity);
             _earthPowerUp.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 2500f * powerUpSpeed, ForceMode.Impulse);
         }
-        else if (spawnHealth && rng >= 100f - powerUpChance)
+        else if (spawnHealth && rng >= 1f - (powerUpChance / 100f))
         {
             GameObject _healthPowerUp = Instantiate(powerUps.healthPowerUp, new Vector3(transform.position.x + Random.Range(-XOffset, XOffset), transform.position.y + Random.Range(-YOffset, YOffset), transform.position.z), Quaternion.identity);
             _healthPowerUp.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 2500f * powerUpSpeed, ForceMode.Impulse);
         }
-        else if (spawnShield && rng >= 100f - powerUpChance)
+        else if (spawnShield && rng >= 1f - (powerUpChance / 100f))
         {
             GameObject _shieldPowerUp = Instantiate(powerUps.shieldPowerUp, new Vector3(transform.position.x + Random.Range(-XOffset, XOffset), transform.position.y + Random.Range(-YOffset, YOffset), transform.position.z), Quaternion.identity);
             _shieldPowerUp.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 2500f * powerUpSpeed, ForceMode.Impulse);
-        } else if (rng >= 100f - coinChance)
+        }
+        else if (rng >= 1f - (coinChance/100f))
         {
             GameObject _coin = Instantiate(coin, new Vector3(transform.position.x + Random.Range(-XOffset, XOffset), transform.position.y + Random.Range(-YOffset, YOffset), transform.position.z), coin.transform.rotation);
             _coin.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 2500f * powerUpSpeed, ForceMode.Impulse);

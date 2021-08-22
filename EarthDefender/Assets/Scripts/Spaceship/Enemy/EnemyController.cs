@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         if (canShoot)
         {
             SoundManager.i.Play(Sounds.Shoot);
-            if (lookAt[0] == null) lookAt[0] = FindObjectOfType<SpaceshipController>().transform;
+            if (lookAt[0] == null && FindObjectOfType<SpaceshipController>() != null) lookAt[0] = FindObjectOfType<SpaceshipController>().transform;
             GameObject _bullet1 = objectPooler.SpawnFromPool(PooledObjects.EnemyBullet, bulletOrigins[0].position, bulletOrigins[0].rotation);
             GameObject _bullet2 = objectPooler.SpawnFromPool(PooledObjects.EnemyBullet, bulletOrigins[1].position, bulletOrigins[1].rotation);
             _bullet1.transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y), Mathf.Abs(transform.localScale.z));

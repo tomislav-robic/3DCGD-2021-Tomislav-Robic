@@ -108,6 +108,8 @@ public class BossController : MonoBehaviour
             Cursor.visible = true;
             GameObject.Find("HUD").SetActive(false);
             FindObjectOfType<SpaceshipController>().enabled = false;
+            foreach (WeaponController weapon in FindObjectsOfType<WeaponController>()) weapon.enabled = false;
+            SpaceshipController.canPause = false;
             Instantiate(winCanvas);
             GameObject _particle = Instantiate(explosionParticle, transform.position, Quaternion.identity);
             _particle.transform.localScale = Vector3.one * 4f;

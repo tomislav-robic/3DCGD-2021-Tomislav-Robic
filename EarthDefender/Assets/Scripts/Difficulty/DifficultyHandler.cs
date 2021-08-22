@@ -30,7 +30,7 @@ public class DifficultyHandler : MonoBehaviour
 
     private void OnSceneLoad(Scene scene, LoadSceneMode sceneMode)
     {
-        if (scene.buildIndex == 0) Destroy(gameObject);
+        if (scene.buildIndex == 0 && i != null) Destroy(gameObject);
     }
 }
 

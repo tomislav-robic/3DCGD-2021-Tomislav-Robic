@@ -13,7 +13,7 @@ public class EarthHealth : MonoBehaviour
     DifficultyHandler difficulty;
 
     public static EarthHealth i;
-
+    bool dead = false;
     private void Awake()
     {
         if (i == null)
@@ -41,6 +41,7 @@ public class EarthHealth : MonoBehaviour
     {
         if (scene.buildIndex > 0)
         {
+            SpaceshipController.canPause = true;
             healthSlider = GameObject.Find("EarthHealth").GetComponent<Slider>();
             healthSlider.maxValue = maxHealth;
             healthSlider.value = health;
@@ -68,13 +69,19 @@ public class EarthHealth : MonoBehaviour
 
     public void Die()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        GameObject.Find("HUD").SetActive(false);
-        Instantiate(gameOverCanvas);
-        FindObjectOfType<SpaceshipController>().enabled = false;
-        FindObjectOfType<SpaceshipHealth>().enabled = false;
-        Destroy(gameObject);
+        if (!dead)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            GameObject.Find("HUD").SetActive(false);
+            Instantiate(gameOverCanvas);
+            foreach (WeaponController weapon in FindObjectsOfType<WeaponController>()) weapon.enabled = false;
+            FindObjectOfType<SpaceshipController>().enabled = false;
+            FindObjectOfType<SpaceshipHealth>().enabled = false;
+            dead = true;
+            Spawner.levelFailed = true;
+            Destroy(gameObject);
+        }
     }
     private void OnDestroy()
     {

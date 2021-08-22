@@ -3393,7 +3393,7 @@ MonoBehaviour:
     type: 3}
   coin: {fileID: 2505820666452186697, guid: da086f52d2a35db4fa7f47079758921e, type: 3}
   asteroidSpeed: 0.75
-  spawnDelay: 2.5
+  spawnDelay: 1.5
   XOffset: 20
   YOffset: 4
   levelTime: 0
@@ -3668,7 +3668,7 @@ MonoBehaviour:
   bulletOrigins:
   - {fileID: 1742160067}
   - {fileID: 526751903}
-  maxHealth: 2500
+  maxHealth: 3500
   pointsBonus: 25000
   rapidFireInterval: 0.15
   rapidFireDelay: 3

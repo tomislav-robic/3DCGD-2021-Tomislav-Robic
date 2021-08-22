@@ -66,6 +66,16 @@ public class LeaderboardManager : MonoBehaviour
         transformList.Add(entryTransform);
     }
 
+    public void DeleteEntries()
+    {
+        foreach(Transform entry in entryTransforms)
+        {
+            Destroy(entry.gameObject);
+        }
+        entryTransforms.Clear();
+        PointsFileSystem.ClearScores();
+    }
+
     class HighscoreEntry
     {
         public int score;

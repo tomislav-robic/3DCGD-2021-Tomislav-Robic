@@ -117,10 +117,11 @@ public class SpaceshipHealth : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        GameObject.Find("HUD").SetActive(false);
+        if (GameObject.Find("HUD") != null) GameObject.Find("HUD").SetActive(false);
         Instantiate(gameOverCanvas);
         SoundManager.i.Play(Sounds.Explosion);
         GameObject particle = Instantiate(explosionParticle, transform.position, Quaternion.identity);
+        Spawner.levelFailed = true;
         Destroy(particle, 5.5f);
         Destroy(gameObject);
     }

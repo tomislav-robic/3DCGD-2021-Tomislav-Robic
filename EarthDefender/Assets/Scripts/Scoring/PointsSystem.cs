@@ -43,8 +43,11 @@ public class PointsSystem : MonoBehaviour
 
     public void UpdatePointsUI()
     {
-        Text text = GameObject.Find("PointsText").GetComponent<Text>();
-        text.text = $"Points: {points}";
+        if (GameObject.Find("PointsText") != null)
+        {
+            Text text = GameObject.Find("PointsText").GetComponent<Text>();
+            text.text = $"Points: {points}";
+        }
     }
 
     public void SavePoints()

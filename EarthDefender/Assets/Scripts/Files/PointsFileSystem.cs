@@ -48,4 +48,15 @@ public static class PointsFileSystem
         return null;
     }
 
+    public static void ClearScores()
+    {
+        List<PointsFile> pointsEntries = new List<PointsFile>();
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Path.Combine(Application.persistentDataPath, "scores.bin");
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        formatter.Serialize(stream, pointsEntries);
+        stream.Close();
+    }
+
 }

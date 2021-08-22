@@ -9,6 +9,7 @@ public class SpaceshipController : MonoBehaviour
     public float mouseSensitivity = 1f;
     public float maxRotation = 30f;
     bool lockedCursor = false;
+    public static bool canPause = true;
     private void Awake()
     {
         lockedCursor = true;
@@ -58,7 +59,7 @@ public class SpaceshipController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
             if (pauseMenuManager == null) pauseMenuManager = Resources.FindObjectsOfTypeAll<PauseMenuManager>()[0];
             LockCursor();
