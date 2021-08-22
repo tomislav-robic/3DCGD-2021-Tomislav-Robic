@@ -55,4 +55,9 @@ public class PointsSystem : MonoBehaviour
         PointsFile pointsFile = new PointsFile(points, playerName);
         PointsFileSystem.SaveScore(pointsFile);
     }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
+    }
 }

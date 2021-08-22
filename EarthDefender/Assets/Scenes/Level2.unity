@@ -158,7 +158,7 @@ MonoBehaviour:
   maxHealth: 250
   shootDelay: 4
   initialDelay: 2
-  pointsBonus: 5000
+  pointsBonus: 15000
   counterOffset: 0
   isBoss: 0
   bulletOrigins:
@@ -456,7 +456,7 @@ MonoBehaviour:
   maxHealth: 250
   shootDelay: 4
   initialDelay: 0
-  pointsBonus: 5000
+  pointsBonus: 15000
   counterOffset: 1
   isBoss: 0
   bulletOrigins:
@@ -1752,7 +1752,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039358595}
-  m_LocalRotation: {x: 0.035646193, y: -0.00000001719545, z: 6.13342e-10, w: 0.9993645}
+  m_LocalRotation: {x: 0.03564617, y: 0.000000017195447, z: -6.1334154e-10, w: 0.9993645}
   m_LocalPosition: {x: 0, y: 3, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2629,7 +2629,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881309822}
-  m_LocalRotation: {x: 0.035646193, y: -0.00000001719545, z: 6.13342e-10, w: 0.9993645}
+  m_LocalRotation: {x: 0.03564617, y: 0.000000017195447, z: -6.1334154e-10, w: 0.9993645}
   m_LocalPosition: {x: 0, y: 3, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

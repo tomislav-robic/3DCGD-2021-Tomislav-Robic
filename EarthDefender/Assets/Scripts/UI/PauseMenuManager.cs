@@ -14,6 +14,7 @@ public class PauseMenuManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         FindObjectOfType<SpaceshipController>().LockCursor();
+        FindObjectOfType<SpaceshipController>().mouseSensitivity = SettingsFileSystem.LoadSettings().mouseSensitivity;
         gameObject.SetActive(false);
     }
     

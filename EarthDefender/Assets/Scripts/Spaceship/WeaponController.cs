@@ -48,4 +48,9 @@ public class WeaponController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         canShoot = true;
     }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
+    }
 }
