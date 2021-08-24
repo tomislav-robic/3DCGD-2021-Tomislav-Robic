@@ -10056,8 +10056,8 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Option A
 --- !u!222 &253283592034938236
@@ -11368,8 +11368,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 211, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 251, y: 0}
+  m_SizeDelta: {x: 240, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &253283592381441972
 CanvasRenderer:
@@ -13959,6 +13959,11 @@ PrefabInstance:
       propertyPath: m_ExposedReferences.m_References.Array.data[1].second
       value: 
       objectReference: {fileID: 206600927}
+    - target: {fileID: 2010519817, guid: cdb1ae42961dcb348871f724358c6e59, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -4735085502634277684, guid: 315b7084aa0594a4eb3ef2f4a2633919,
+        type: 2}
     - target: {fileID: 7079701686433956987, guid: cdb1ae42961dcb348871f724358c6e59,
         type: 3}
       propertyPath: m_RootOrder

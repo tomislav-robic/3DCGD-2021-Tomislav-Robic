@@ -37,6 +37,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         spawnedAsteroids = 0;
+        levelFailed = false;
         objectPooler = ObjectPooler.i;
         difficulty = FindObjectOfType<DifficultyHandler>();
         if (useEnemies)
@@ -72,7 +73,6 @@ public class Spawner : MonoBehaviour
                 foreach (WeaponController weapon in FindObjectsOfType<WeaponController>()) weapon.enabled = false;
                 SpaceshipController.canPause = false;
                 executed = true;
-                //Debug.Log($"Script executed");
             }
         } 
         else if (useEnemies)
