@@ -17,7 +17,15 @@ public class PauseMenuManager : MonoBehaviour
         FindObjectOfType<SpaceshipController>().mouseSensitivity = SettingsFileSystem.LoadSettings().mouseSensitivity;
         gameObject.SetActive(false);
     }
-    
+
+    public void RestartGame()
+    {
+        Destroy(DifficultyHandler.i.gameObject);
+        Destroy(PointsSystem.i.gameObject);
+        Destroy(SpaceshipHealth.i.gameObject);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
+    }
     public void Open()
     {
         buttons.SetActive(true);

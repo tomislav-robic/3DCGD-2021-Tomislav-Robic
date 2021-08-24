@@ -3,5 +3,4 @@
 public class SubtitleBehaviour : PlayableBehaviour
 {
     public string subtitleText;
-
 }

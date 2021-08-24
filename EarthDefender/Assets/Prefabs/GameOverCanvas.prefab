@@ -225,7 +225,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 90}
+  m_SizeDelta: {x: 240, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1766520401147613334
 CanvasRenderer:
@@ -570,9 +570,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Retry
-
-'
+  m_Text: Restart
 --- !u!1 &1766520402328799043
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class GameOverCanvasManager : MonoBehaviour
         Destroy(DifficultyHandler.i.gameObject);
         Destroy(PointsSystem.i.gameObject);
         Destroy(SpaceshipHealth.i.gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1);
     }
 
     public void BackToMainMenu()
