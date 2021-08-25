@@ -20,9 +20,10 @@ public class PauseMenuManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Destroy(DifficultyHandler.i.gameObject);
-        Destroy(PointsSystem.i.gameObject);
-        Destroy(SpaceshipHealth.i.gameObject);
+        if (DifficultyHandler.i != null) Destroy(DifficultyHandler.i.gameObject);
+        if (PointsSystem.i != null) Destroy(PointsSystem.i.gameObject);
+        if (SpaceshipHealth.i != null) Destroy(SpaceshipHealth.i.gameObject);
+        if (EarthHealth.i != null) Destroy(EarthHealth.i.gameObject);
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
